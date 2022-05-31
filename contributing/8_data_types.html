@@ -164,6 +164,8 @@
 <li><p>bool</p></li>
 </ul>
 <p>These are all defined at <a class="reference external" href="https://github.com/unifyai/ivy/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L225">import time</a>, with each of these set as an <a class="reference external" href="https://github.com/unifyai/ivy/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L51">ivy.Dtype</a> instance.
+The <code class="code docutils literal notranslate"><span class="pre">ivy.Dtype</span></code> class derives from <code class="code docutils literal notranslate"><span class="pre">str</span></code>,
+and has simple logic in the constructor to verify that the string formatting is correct.
 All data types can be queried as attributes of the <code class="code docutils literal notranslate"><span class="pre">ivy</span></code> namespace, such as <code class="code docutils literal notranslate"><span class="pre">ivy.float32</span></code> etc.</p>
 <p>In addition, <em>native</em> data types are <a class="reference external" href="https://github.com/unifyai/ivy/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L241">also specified</a> at import time.
 Likewise, these are all initially set as <a class="reference external" href="https://github.com/unifyai/ivy/blob/9c2eb725387152d721040d8638c8f898541a9da4/ivy/__init__.py#L51">ivy.Dtype</a> instances.</p>
@@ -194,9 +196,9 @@ This is <a class="reference external" href="https://github.com/unifyai/ivy/blob/
 <h2>Data Type Module<a class="headerlink" href="#data-type-module" title="Permalink to this headline"></a></h2>
 <p>The <a class="reference external" href="https://github.com/unifyai/ivy/blob/30b7ca4f8a50a52f51884738fe7323883ce891bd/ivy/functional/ivy/data_type.py">data_type.py</a> module provides a variety of functions for working with data types.
 A few examples include
-<code class="code docutils literal notranslate"><span class="pre">astype</span></code> which copies an array to a specified data type,
-<code class="code docutils literal notranslate"><span class="pre">broadcast_to</span></code> which broadcasts an array to a specified shape,
-and <code class="code docutils literal notranslate"><span class="pre">result_type</span></code> which returns the dtype that results from applying the type promotion rules to the arguments.</p>
+<code class="code docutils literal notranslate"><span class="pre">ivy.astype</span></code> which copies an array to a specified data type,
+<code class="code docutils literal notranslate"><span class="pre">ivy.broadcast_to</span></code> which broadcasts an array to a specified shape,
+and <code class="code docutils literal notranslate"><span class="pre">ivy.result_type</span></code> which returns the dtype that results from applying the type promotion rules to the arguments.</p>
 <p>Many functions are <em>convenience</em> functions, which means that they do not directly modify arrays,
 as explained in the <a class="reference internal" href="3_function_types.html#function-types"><span class="std std-ref">Function Types</span></a> section.</p>
 <p>For example,
@@ -206,7 +208,7 @@ as explained in the <a class="reference internal" href="3_function_types.html#fu
 and <a class="reference external" href="https://github.com/unifyai/ivy/blob/f18df2e19d6a5a56463fa1a15760c555a30cb2b2/ivy/functional/ivy/data_type.py#L484">ivy.default_dtype</a> which returns the correct data type to use,
 are all convenience functions.</p>
 <p><a class="reference external" href="https://github.com/unifyai/ivy/blob/f18df2e19d6a5a56463fa1a15760c555a30cb2b2/ivy/functional/ivy/data_type.py#L484">ivy.default_dtype</a> is arguably the most important function.
-Any function in the functional API that receives a <code class="code docutils literal notranslate"><span class="pre">dtype</span></code> argument will make use of this,
+Any function in the functional API that receives a <code class="code docutils literal notranslate"><span class="pre">dtype</span></code> argument will make use of this function,
 as explained below.</p>
 </section>
 <section id="arguments-in-other-functions">
