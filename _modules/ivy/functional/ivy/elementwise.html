@@ -949,7 +949,22 @@
 <span class="sd">    ret</span>
 <span class="sd">        an array containing the inverse sine of each element in ``x``. The returned</span>
 <span class="sd">        array must have a floating-point data type determined by :ref:`type-promotion`.</span>
+<span class="sd">    This method conforms to the `Array API Standard</span>
+<span class="sd">    &lt;https://data-apis.org/array-api/latest/&gt;`_. This docstring is an extension of the</span>
+<span class="sd">    `docstring &lt;https://data-apis.org/array-api/latest/API_specification/generated/signatures.elementwise_functions.tan.html&gt;`_</span>
+<span class="sd">    in the standard.</span>
+<span class="sd">    Both the description and the type hints above assumes an array input for simplicity,</span>
+<span class="sd">    but this function is *nestable*, and therefore also accepts :code:`ivy.Container`</span>
+<span class="sd">    instances in place of any of the arguments.</span>
 
+<span class="sd">    With :code:`ivy.Container` input:</span>
+<span class="sd">    &gt;&gt;&gt; x = ivy.Container(a=ivy.array([0., 0.1, 0.2]), b=ivy.array([0.3, 0.4, 0.5]))</span>
+<span class="sd">    &gt;&gt;&gt; y = ivy.asin(x)</span>
+<span class="sd">    &gt;&gt;&gt; print(y)</span>
+<span class="sd">    {</span>
+<span class="sd">        a: ivy.array([0., 0.10016742, 0.20135793], dtype=float32),</span>
+<span class="sd">        b: ivy.array([0.30469266, 0.41151685, 0.5235988], dtype=float32)</span>
+<span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">current_backend</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">asin</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span></div>
 
