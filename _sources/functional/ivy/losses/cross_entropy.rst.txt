@@ -2,6 +2,8 @@ cross_entropy
 =============
 
 .. autofunction:: ivy.functional.ivy.losses.cross_entropy
+
+.. autofunction:: ivy.array.array_methods.cross_entropy
 |
 | **Supported Frameworks:**
 

@@ -2,6 +2,8 @@ square
 ======
 
 .. autofunction:: ivy.functional.ivy.elementwise.square
+
+.. autofunction:: ivy.array.array_methods.square
 |
 | **Supported Frameworks:**
 
