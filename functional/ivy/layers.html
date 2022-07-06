@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="linear" href="layers/linear.html" />
-    <link rel="prev" title="ivy.Container.static_lamb_update" href="gradients/lamb_update/static_lamb_update_container.html" /> 
+    <link rel="prev" title="lamb_update" href="gradients/lamb_update.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -609,20 +609,17 @@ batch of different network parameters are to be represented.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>x</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>]) – input tensor of LSTM layer <em>[batch_shape, t, in]</em>.</p></li>
-<li><p><strong>init_h</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>]) – initial state tensor for the cell output <em>[batch_shape, out]</em>.</p></li>
-<li><p><strong>init_c</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>]) – initial state tensor for the cell hidden state <em>[batch_shape, out]</em>.</p></li>
-<li><p><strong>kernel</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>]) – weights for cell kernel <em>[in, 4 x out]</em>.</p></li>
-<li><p><strong>recurrent_kernel</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>]) – weights for cell recurrent kernel <em>[out, 4 x out]</em>.</p></li>
-<li><p><strong>bias</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>]]) – bias for cell kernel <em>[4 x out]</em>. (Default value = None) (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
-<li><p><strong>recurrent_bias</strong> (<code class="xref py py-data docutils literal notranslate"><span class="pre">Optional</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>]]) – bias for cell recurrent kernel <em>[4 x out]</em>. (Default value = None) (default: <code class="docutils literal notranslate"><span class="pre">None</span></code>)</p></li>
+<li><p><strong>x</strong> – input tensor of LSTM layer <em>[batch_shape, t, in]</em>.</p></li>
+<li><p><strong>init_h</strong> – initial state tensor for the cell output <em>[batch_shape, out]</em>.</p></li>
+<li><p><strong>init_c</strong> – initial state tensor for the cell hidden state <em>[batch_shape, out]</em>.</p></li>
+<li><p><strong>kernel</strong> – weights for cell kernel <em>[in, 4 x out]</em>.</p></li>
+<li><p><strong>recurrent_kernel</strong> – weights for cell recurrent kernel <em>[out, 4 x out]</em>.</p></li>
+<li><p><strong>bias</strong> – bias for cell kernel <em>[4 x out]</em>. (Default value = None)</p></li>
+<li><p><strong>recurrent_bias</strong> – bias for cell recurrent kernel <em>[4 x out]</em>. (Default value = None)</p></li>
 </ul>
 </dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p><code class="xref py py-data docutils literal notranslate"><span class="pre">Tuple</span></code>[<code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Union</span></code>[<code class="xref py py-class docutils literal notranslate"><span class="pre">Array</span></code>, <code class="xref py py-class docutils literal notranslate"><span class="pre">NativeArray</span></code>, <code class="xref py py-data docutils literal notranslate"><span class="pre">Any</span></code>]]</p>
-</dd>
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><em>ret</em> – hidden state for all timesteps <em>[batch_shape,t,out]</em> and cell state for last
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>ret</em> – hidden state for all timesteps <em>[batch_shape,t,out]</em> and cell state for last
 timestep <em>[batch_shape,out]</em></p>
 </dd>
 </dl>
@@ -842,7 +839,7 @@ The shape of output array is <em>[batch_shape,num_queries,feat_dim]</em> .</p></
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="gradients/lamb_update/static_lamb_update_container.html" class="btn btn-neutral float-left" title="ivy.Container.static_lamb_update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="gradients/lamb_update.html" class="btn btn-neutral float-left" title="lamb_update" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="layers/linear.html" class="btn btn-neutral float-right" title="linear" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
