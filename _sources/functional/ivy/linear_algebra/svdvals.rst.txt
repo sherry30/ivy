@@ -32,6 +32,6 @@ svdvals
    :maxdepth: -1
    :caption: svdvals
 
-   svdvals/svdvals_array.rst
    svdvals/svdvals_functional.rst
+   svdvals/svdvals_array.rst
 
