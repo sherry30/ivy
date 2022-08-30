@@ -268,10 +268,11 @@ which would make your frontend function much simpler to implement,
 then you you should first do the following:</p>
 <ol class="arabic simple">
 <li><p>create a new issue with the title <code class="code docutils literal notranslate"><span class="pre">ivy.&lt;func_name&gt;</span></code>, add the labels
-<code class="code docutils literal notranslate"><span class="pre">Suggestion</span></code>, <code class="code docutils literal notranslate"><span class="pre">Extension</span></code> and <code class="code docutils literal notranslate"><span class="pre">Next</span> <span class="pre">Release</span></code> to it, and then simply
-leave this issue open. At some point, a member of our team will assess whether it
-should be added, and if so, they will add it to another appropriate ToDo list issue
-(see the open task below). You do not need to wait for this in order to proceed.</p></li>
+<code class="code docutils literal notranslate"><span class="pre">Suggestion</span></code>, <code class="code docutils literal notranslate"><span class="pre">Extension</span></code>, <code class="code docutils literal notranslate"><span class="pre">Ivy</span> <span class="pre">API</span></code> and <code class="code docutils literal notranslate"><span class="pre">Next</span> <span class="pre">Release</span></code>
+to it, and then simply leave this issue open. At some point, a member of our team
+will assess whether it should be added, and if so, they will add it to another
+appropriate ToDo list issue (see the open task below).
+You do not need to wait for this in order to proceed.</p></li>
 </ol>
 <p>After this, you then have two options for how to proceed:</p>
 <ol class="arabic simple">
@@ -289,7 +290,9 @@ In either case, you should add the label “Pending other Issue” to the fronte
 sub-task issue, and leave it open. This issue will then still show up as open in the
 original frontend ToDo list, helpfully preventing others from working on this
 problematic frontend function, which depends on the unimplemented
-<code class="code docutils literal notranslate"><span class="pre">ivy.&lt;func_name&gt;</span></code>.</p></li>
+<code class="code docutils literal notranslate"><span class="pre">ivy.&lt;func_name&gt;</span></code>. Finally, you should add a comment to the issue with the
+contents: <code class="code docutils literal notranslate"><span class="pre">pending</span> <span class="pre">&lt;issue_link&gt;</span></code>, which links to the <code class="code docutils literal notranslate"><span class="pre">ivy.&lt;func_name&gt;</span></code>
+issue, making the “Pending other Issue” label more informative.</p></li>
 </ol>
 <p>There are a few other points to take note of when working on your chosen frontend
 function:</p>
