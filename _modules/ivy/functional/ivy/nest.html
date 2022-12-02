@@ -227,12 +227,10 @@
 
 <div class="viewcode-block" id="set_nest_at_index"><a class="viewcode-back" href="../../../../functional/ivy/nest/set_nest_at_index.html#ivy.functional.ivy.nest.set_nest_at_index">[docs]</a><span class="nd">@handle_exceptions</span>
 <span class="k">def</span> <span class="nf">set_nest_at_index</span><span class="p">(</span>
-    <span class="n">nest</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">],</span>
+    <span class="n">nest</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">],</span>
     <span class="n">index</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
     <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span>
     <span class="o">/</span><span class="p">,</span>
-    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">_result</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Set the value of a nested item at a specified index.</span>
 
@@ -295,28 +293,12 @@
 <span class="sd">        b: ivy.array([3., 4.])</span>
 <span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tupled</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>  <span class="c1"># for turning tuple back into tuple from list</span>
-    <span class="k">if</span> <span class="n">_result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">_result</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">nest</span><span class="p">)</span>
-        <span class="c1"># turning outer nest to list so it can be updated</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="n">tupled</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
-            <span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span>
-        <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-            <span class="n">tupled</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">set_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">value</span><span class="p">,</span> <span class="n">inplace</span><span class="p">,</span> <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-        <span class="c1"># turning back to tuple if outer nest was tuple</span>
-        <span class="k">if</span> <span class="n">tupled</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-    <span class="k">if</span> <span class="n">tupled</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">_result</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">_result</span></div>
+        <span class="n">ret</span> <span class="o">=</span> <span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+        <span class="n">ivy</span><span class="o">.</span><span class="n">set_nest_at_index</span><span class="p">(</span><span class="n">ret</span><span class="p">,</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">value</span><span class="p">)</span>
+        <span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ret</span></div>
 
 
 <div class="viewcode-block" id="insert_into_nest_at_index"><a class="viewcode-back" href="../../../../functional/ivy/nest/insert_into_nest_at_index.html#ivy.functional.ivy.nest.insert_into_nest_at_index">[docs]</a><span class="nd">@handle_exceptions</span>
@@ -337,8 +319,6 @@
     <span class="n">index</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]],</span>
     <span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Any</span><span class="p">],</span> <span class="n">Any</span><span class="p">],</span>
     <span class="o">/</span><span class="p">,</span>
-    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">_result</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Map a function to the value of a nested item at a specified index.</span>
 
@@ -402,29 +382,10 @@
 <span class="sd">    }</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">tupled</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">]</span>  <span class="c1"># for turning tuple back into tuple from list</span>
-    <span class="k">if</span> <span class="n">_result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">_result</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">nest</span><span class="p">)</span>
-        <span class="c1"># turning outer nest to list so it can be updated</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="n">tupled</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
-            <span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ret</span>
-        <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">ret</span>
+        <span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-            <span class="n">tupled</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">map_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">fn</span><span class="p">,</span> <span class="n">inplace</span><span class="p">,</span> <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-        <span class="c1"># turning back to tuple if outer nest was tuple</span>
-        <span class="k">if</span> <span class="n">tupled</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
-            <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-    <span class="k">if</span> <span class="n">tupled</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-        <span class="n">_result</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">_result</span></div>
+        <span class="n">map_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">fn</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="multi_index_nest"><a class="viewcode-back" href="../../../../functional/ivy/nest/multi_index_nest.html#ivy.functional.ivy.nest.multi_index_nest">[docs]</a><span class="nd">@handle_exceptions</span>
@@ -464,7 +425,6 @@
     <span class="n">indices</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
     <span class="n">values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">Iterable</span><span class="p">[</span><span class="nb">int</span><span class="p">]],</span>
     <span class="o">/</span><span class="p">,</span>
-    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Set the value of a nested item at specified indices with specified values.</span>
 
@@ -517,16 +477,7 @@
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="p">(</span><span class="nb">list</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)):</span>
         <span class="n">values</span> <span class="o">=</span> <span class="p">[</span><span class="n">values</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">indices</span><span class="p">)</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">set_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">inplace</span><span class="p">)</span>
-            <span class="k">continue</span>
-        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">set_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">inplace</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">set_nest_at_index</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">inplace</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">result</span></div>
+    <span class="p">[</span><span class="n">set_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">values</span><span class="p">)]</span></div>
 
 
 <div class="viewcode-block" id="insert_into_nest_at_indices"><a class="viewcode-back" href="../../../../functional/ivy/nest/insert_into_nest_at_indices.html#ivy.functional.ivy.nest.insert_into_nest_at_indices">[docs]</a><span class="nd">@handle_exceptions</span>
@@ -553,13 +504,7 @@
 
 
 <div class="viewcode-block" id="map_nest_at_indices"><a class="viewcode-back" href="../../../../functional/ivy/nest/map_nest_at_indices.html#ivy.functional.ivy.nest.map_nest_at_indices">[docs]</a><span class="nd">@handle_exceptions</span>
-<span class="k">def</span> <span class="nf">map_nest_at_indices</span><span class="p">(</span>
-    <span class="n">nest</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span>
-    <span class="n">indices</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">,</span>
-    <span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
-    <span class="o">/</span><span class="p">,</span>
-    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-<span class="p">):</span>
+<span class="k">def</span> <span class="nf">map_nest_at_indices</span><span class="p">(</span><span class="n">nest</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">indices</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">fn</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span> <span class="o">/</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Map a function to the values of a nested item at the specified indices.</span>
 
 <span class="sd">    Parameters</span>
@@ -609,16 +554,7 @@
 <span class="sd">    &gt;&gt;&gt; print(nest)</span>
 <span class="sd">    ivy.array([[-9., 8., -17.], [11., -3., 5.]])</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">indices</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">map_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">)</span>
-            <span class="k">continue</span>
-        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">map_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">result</span> <span class="o">=</span> <span class="n">map_nest_at_index</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="n">inplace</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">result</span></div>
+    <span class="p">[</span><span class="n">map_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">fn</span><span class="p">)</span> <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="nested_argwhere"><a class="viewcode-back" href="../../../../functional/ivy/nest/nested_argwhere.html#ivy.functional.ivy.nest.nested_argwhere">[docs]</a><span class="nd">@handle_exceptions</span>
@@ -982,7 +918,6 @@
     <span class="n">_list_check_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">_dict_check_fn</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">extra_nest_types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">type</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">type</span><span class="p">]]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">inplace</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Dict</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Applies a function on x in a nested manner, whereby all dicts, lists and tuples</span>
 <span class="sd">    are traversed to their lowest leaves before applying the method and returning x. If</span>
@@ -1064,7 +999,6 @@
                 <span class="n">list_check_fn</span><span class="p">,</span>
                 <span class="n">dict_check_fn</span><span class="p">,</span>
                 <span class="n">extra_nest_types</span><span class="p">,</span>
-                <span class="n">inplace</span><span class="p">,</span>
             <span class="p">)</span>
             <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span>
         <span class="p">]</span>
@@ -1077,50 +1011,43 @@
             <span class="k">return</span> <span class="n">class_instance</span><span class="p">(</span><span class="n">ret_list</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">list_check_fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">list</span><span class="p">)</span> <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">extra_nest_types</span><span class="p">):</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">)):</span>
-            <span class="n">ret</span> <span class="o">=</span> <span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
-                <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">inplace_update</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">ret</span><span class="p">)</span>
-            <span class="k">return</span> <span class="n">ret</span>
-        <span class="n">ret_list</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">nested_map</span><span class="p">(</span>
-                <span class="n">i</span><span class="p">,</span>
-                <span class="n">fn</span><span class="p">,</span>
-                <span class="n">include_derived</span><span class="p">,</span>
-                <span class="n">to_mutable</span><span class="p">,</span>
-                <span class="n">max_depth</span><span class="p">,</span>
-                <span class="n">_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="n">tuple_check_fn</span><span class="p">,</span>
-                <span class="n">list_check_fn</span><span class="p">,</span>
-                <span class="n">dict_check_fn</span><span class="p">,</span>
-                <span class="n">extra_nest_types</span><span class="p">,</span>
-                <span class="n">inplace</span><span class="p">,</span>
-            <span class="p">)</span>
-            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span>
-        <span class="p">]</span>
-        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
-            <span class="n">x</span><span class="p">[:]</span> <span class="o">=</span> <span class="n">ret_list</span><span class="p">[:]</span>
-        <span class="k">return</span> <span class="n">class_instance</span><span class="p">(</span><span class="n">ret_list</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">class_instance</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">nested_map</span><span class="p">(</span>
+                    <span class="n">i</span><span class="p">,</span>
+                    <span class="n">fn</span><span class="p">,</span>
+                    <span class="n">include_derived</span><span class="p">,</span>
+                    <span class="n">to_mutable</span><span class="p">,</span>
+                    <span class="n">max_depth</span><span class="p">,</span>
+                    <span class="n">_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="n">tuple_check_fn</span><span class="p">,</span>
+                    <span class="n">list_check_fn</span><span class="p">,</span>
+                    <span class="n">dict_check_fn</span><span class="p">,</span>
+                    <span class="n">extra_nest_types</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">x</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
     <span class="k">elif</span> <span class="n">dict_check_fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
         <span class="n">class_instance</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">ret</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="n">k</span><span class="p">:</span> <span class="n">nested_map</span><span class="p">(</span>
-                <span class="n">v</span><span class="p">,</span>
-                <span class="n">fn</span><span class="p">,</span>
-                <span class="n">include_derived</span><span class="p">,</span>
-                <span class="n">to_mutable</span><span class="p">,</span>
-                <span class="n">max_depth</span><span class="p">,</span>
-                <span class="n">_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
-                <span class="n">tuple_check_fn</span><span class="p">,</span>
-                <span class="n">list_check_fn</span><span class="p">,</span>
-                <span class="n">dict_check_fn</span><span class="p">,</span>
-                <span class="n">extra_nest_types</span><span class="p">,</span>
-                <span class="n">inplace</span><span class="p">,</span>
-            <span class="p">)</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
-        <span class="p">}</span>
-        <span class="k">if</span> <span class="n">inplace</span><span class="p">:</span>
-            <span class="n">x</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">class_instance</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">class_instance</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="n">k</span><span class="p">:</span> <span class="n">nested_map</span><span class="p">(</span>
+                    <span class="n">v</span><span class="p">,</span>
+                    <span class="n">fn</span><span class="p">,</span>
+                    <span class="n">include_derived</span><span class="p">,</span>
+                    <span class="n">to_mutable</span><span class="p">,</span>
+                    <span class="n">max_depth</span><span class="p">,</span>
+                    <span class="n">_depth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+                    <span class="n">tuple_check_fn</span><span class="p">,</span>
+                    <span class="n">list_check_fn</span><span class="p">,</span>
+                    <span class="n">dict_check_fn</span><span class="p">,</span>
+                    <span class="n">extra_nest_types</span><span class="p">,</span>
+                <span class="p">)</span>
+                <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
     <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span></div>
 
 
