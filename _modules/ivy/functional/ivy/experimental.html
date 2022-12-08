@@ -130,7 +130,7 @@
   <h1>Source code for ivy.functional.ivy.experimental</h1><div class="highlight"><pre>
 <span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Literal</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Literal</span><span class="p">,</span> <span class="n">Sequence</span>
 <span class="kn">import</span> <span class="nn">ivy</span>
 <span class="kn">from</span> <span class="nn">ivy.func_wrapper</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">handle_array_like</span><span class="p">,</span>
@@ -636,6 +636,42 @@
 <span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">ivy</span><span class="o">.</span><span class="n">current_backend</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">dct</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">type</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">n</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="n">axis</span><span class="p">,</span> <span class="n">norm</span><span class="o">=</span><span class="n">norm</span><span class="p">,</span> <span class="n">out</span><span class="o">=</span><span class="n">out</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="interpolate"><a class="viewcode-back" href="../../../../functional/ivy/experimental/interpolate/interpolate_functional.html#ivy.functional.ivy.experimental.interpolate">[docs]</a><span class="nd">@to_native_arrays_and_back</span>
+<span class="nd">@integer_arrays_to_float</span>
+<span class="nd">@handle_nestable</span>
+<span class="k">def</span> <span class="nf">interpolate</span><span class="p">(</span>
+    <span class="n">x</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">],</span>
+    <span class="n">size</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span>
+    <span class="o">/</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">mode</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="s2">&quot;bilinear&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="s2">&quot;bilinear&quot;</span><span class="p">,</span>
+    <span class="n">align_corners</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">antialias</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">bool</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Down/up samples the input to the given size.</span>
+
+<span class="sd">    Parameters</span>
+<span class="sd">    ----------</span>
+<span class="sd">    x</span>
+<span class="sd">        The input to down/up sample.</span>
+<span class="sd">        shape should be [batch_size, channel, (height), width]</span>
+<span class="sd">    size</span>
+<span class="sd">        output spatial size</span>
+<span class="sd">    mode</span>
+<span class="sd">        algorithm to use for upsampling:</span>
+<span class="sd">        can be &#39;linear&#39;, &#39;bilinear&#39;</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ret</span>
+<span class="sd">        Array containing the transformed input.</span>
+<span class="sd">        shape of ret will be [batch_size, channel, (height), width]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ivy</span><span class="o">.</span><span class="n">current_backend</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">size</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span> <span class="n">align_corners</span><span class="o">=</span><span class="n">align_corners</span>
+    <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="fft"><a class="viewcode-back" href="../../../../functional/ivy/experimental/fft.html#ivy.functional.ivy.experimental.fft">[docs]</a><span class="nd">@to_native_arrays_and_back</span>
