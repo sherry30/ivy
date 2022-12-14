@@ -81,14 +81,14 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Framework Classes</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../stateful/layers.html">Layers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../stateful/module.html">Module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../stateful/converters.html">Converters</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../stateful/activations.html">Activations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateful/layers.html">Layers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateful/converters.html">Converters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateful/module.html">Module</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../stateful/initializers.html">Initializers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stateful/sequential.html">Sequential</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../stateful/norms.html">Norms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../stateful/optimizers.html">Optimizers</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../stateful/sequential.html">Sequential</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Docs</span></p>
 <ul>
@@ -250,6 +250,11 @@
 <span class="sd">    _result</span>
 <span class="sd">        Placeholder for the result of the update. do not set this paramter.</span>
 
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ret</span>
+<span class="sd">        nest with changed value at the given index.</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    With :class:`ivy.Array` inputs:</span>
@@ -358,6 +363,11 @@
 <span class="sd">        Only works if nest is a mutable type. Default is ``True``.</span>
 <span class="sd">    _result</span>
 <span class="sd">        Placeholder for the result of the update. do not set this paramter.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ret</span>
+<span class="sd">        nest with applicable of fn on given index.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
@@ -490,6 +500,11 @@
 <span class="sd">        Whether to inplace update the input nest or not</span>
 <span class="sd">        Only works if nest is a mutable type. Default is ``True``.</span>
 
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ret</span>
+<span class="sd">        nest with updated values at the given indices.</span>
+
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
 <span class="sd">    With :code:`List` inputs:</span>
@@ -594,6 +609,11 @@
 <span class="sd">    shallow</span>
 <span class="sd">        Whether to inplace update the input nest or not</span>
 <span class="sd">        Only works if nest is a mutable type. Default is ``True``.</span>
+
+<span class="sd">    Returns</span>
+<span class="sd">    -------</span>
+<span class="sd">    ret</span>
+<span class="sd">        nest with applicable of fn on given indices.</span>
 
 <span class="sd">    Examples</span>
 <span class="sd">    --------</span>
