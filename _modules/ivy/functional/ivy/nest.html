@@ -233,7 +233,7 @@
     <span class="o">/</span><span class="p">,</span>
     <span class="n">shallow</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">_result</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-<span class="p">):</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">ivy</span><span class="o">.</span><span class="n">Array</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">NativeArray</span><span class="p">,</span> <span class="n">ivy</span><span class="o">.</span><span class="n">Container</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Set the value of a nested item at a specified index.</span>
 
 <span class="sd">    Parameters</span>
@@ -300,29 +300,24 @@
 <span class="sd">        b: ivy.array([3., 4.])</span>
 <span class="sd">    }</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">outer_tupled</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">nest_type</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">nest</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">_result</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">shallow</span><span class="p">:</span>
-            <span class="n">_result</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">nest</span><span class="p">)(</span><span class="n">nest</span><span class="p">)</span>
+            <span class="n">_result</span> <span class="o">=</span> <span class="n">nest_type</span><span class="p">(</span><span class="n">nest</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">_result</span> <span class="o">=</span> <span class="n">copy_nest</span><span class="p">(</span><span class="n">nest</span><span class="p">)</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="n">outer_tupled</span> <span class="o">=</span> <span class="kc">True</span>
-            <span class="n">_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+        <span class="n">_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">nest</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="k">else</span> <span class="n">_result</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">index</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">shallow</span><span class="p">:</span>
-            <span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;shallow cannot be set to True for immutable types&quot;</span><span class="p">)</span>
+        <span class="n">_result</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_result</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">)</span> <span class="k">else</span> <span class="n">_result</span>
         <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="n">value</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">inner_tupled</span> <span class="o">=</span> <span class="kc">False</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="nb">tuple</span><span class="p">):</span>
-            <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-            <span class="n">inner_tupled</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="n">set_nest_at_index</span><span class="p">(</span><span class="n">nest</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">index</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">value</span><span class="p">,</span> <span class="n">shallow</span><span class="p">,</span> <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-        <span class="k">if</span> <span class="n">inner_tupled</span><span class="p">:</span>
-            <span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_result</span><span class="p">[</span><span class="n">index</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
-    <span class="k">if</span> <span class="n">outer_tupled</span><span class="p">:</span>
-        <span class="n">_result</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
+    <span class="n">_result</span> <span class="o">=</span> <span class="n">nest_type</span><span class="p">(</span><span class="n">_result</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">_result</span></div>
 
 
