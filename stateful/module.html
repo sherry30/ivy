@@ -98,6 +98,10 @@
 <li class="toctree-l1"><a class="reference internal" href="norms.html">Norms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="optimizers.html">Optimizers</a></li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Nested array</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../nested_array/nested_array.html">Nested array</a></li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Docs</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../ivy"">Ivy</a></li>
@@ -482,11 +486,13 @@ which all nested key-chains flattened. Default is <code class="docutils literal 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.stateful.module.Module.to_haiku_module">
 <span class="sig-name descname"><span class="pre">to_haiku_module</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ivy/stateful/module.html#Module.to_haiku_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.module.Module.to_haiku_module" title="Permalink to this definition"></a></dt>
-<dd><p>Converts an ivy Module instance to a Haiku Module instance.
-:param ivy_module: The ivy module instance to convert</p>
+<dd><p>Converts an ivy Module instance to a Haiku Module instance.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><em>ret</em> – The new trainable hk.Module instance.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>ivy_module</strong> – The ivy module instance to convert</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>ret</em> – The new trainable hk.Module instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -494,11 +500,13 @@ which all nested key-chains flattened. Default is <code class="docutils literal 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.stateful.module.Module.to_keras_module">
 <span class="sig-name descname"><span class="pre">to_keras_module</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ivy/stateful/module.html#Module.to_keras_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.module.Module.to_keras_module" title="Permalink to this definition"></a></dt>
-<dd><p>Converts an ivy Module instance to a Keras Module instance.
-:param self: The ivy module instance to convert</p>
+<dd><p>Converts an ivy Module instance to a Keras Module instance.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><em>ret</em> – The new trainable tf.keras.Module instance.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> – The ivy module instance to convert</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>ret</em> – The new trainable tf.keras.Module instance.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -506,11 +514,13 @@ which all nested key-chains flattened. Default is <code class="docutils literal 
 <dl class="py method">
 <dt class="sig sig-object py" id="ivy.stateful.module.Module.to_torch_module">
 <span class="sig-name descname"><span class="pre">to_torch_module</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/ivy/stateful/module.html#Module.to_torch_module"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ivy.stateful.module.Module.to_torch_module" title="Permalink to this definition"></a></dt>
-<dd><p>Converts an ivy Module instance to a Torch Module instance.
-:param self: The ivy module instance to convert</p>
+<dd><p>Converts an ivy Module instance to a Torch Module instance.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p><em>ret</em> – The new trainable torch.nn.Module instance.</p>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>self</strong> – The ivy module instance to convert</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><em>ret</em> – The new trainable torch.nn.Module instance.</p>
 </dd>
 </dl>
 </dd></dl>
