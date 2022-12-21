@@ -333,6 +333,7 @@ Citation
    :caption: Nested array
 
    nested_array/base.rst
+   nested_array/elementwise.rst
    nested_array/nested_array.rst
 
 

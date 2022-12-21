@@ -18,6 +18,7 @@ General
    general/is_ivy_array.rst
    general/is_array.rst
    general/is_ivy_container.rst
+   general/is_ivy_nested_array.rst
    general/set_array_mode.rst
    general/unset_array_mode.rst
    general/get_array_mode.rst

@@ -93,6 +93,7 @@
 <p class="caption" role="heading"><span class="caption-text">Nested array</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="nested_array/base.html">Base</a></li>
+<li class="toctree-l1"><a class="reference internal" href="nested_array/elementwise.html">Elementwise</a></li>
 <li class="toctree-l1"><a class="reference internal" href="nested_array/nested_array.html">Nested array</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Docs</span></p>
@@ -3219,6 +3220,14 @@
         <li><a href="data_classes/container.html#ivy.container.container.Container.is_ivy_container">(ivy.container.container.Container method)</a>, <a href="data_classes/container/container.html#ivy.container.container.Container.is_ivy_container">[1]</a>, <a href="data_classes/container/container/Container.html#ivy.container.container.Container.is_ivy_container">[2]</a>
 </li>
       </ul></li>
+      <li><a href="functional/ivy/general.html#ivy.functional.ivy.general.is_ivy_nested_array">is_ivy_nested_array() (in module ivy.functional.ivy.general)</a>, <a href="functional/ivy/general/is_ivy_nested_array.html#ivy.functional.ivy.general.is_ivy_nested_array">[1]</a>
+
+      <ul>
+        <li><a href="data_classes/array.html#ivy.array.array.Array.is_ivy_nested_array">(ivy.array.array.Array method)</a>, <a href="data_classes/array/array.html#ivy.array.array.Array.is_ivy_nested_array">[1]</a>, <a href="data_classes/array/array/Array.html#ivy.array.array.Array.is_ivy_nested_array">[2]</a>
+</li>
+        <li><a href="data_classes/container.html#ivy.container.container.Container.is_ivy_nested_array">(ivy.container.container.Container method)</a>, <a href="data_classes/container/container.html#ivy.container.container.Container.is_ivy_nested_array">[1]</a>, <a href="data_classes/container/container/Container.html#ivy.container.container.Container.is_ivy_nested_array">[2]</a>
+</li>
+      </ul></li>
       <li><a href="functional/ivy/experimental.html#ivy.functional.ivy.experimental.is_ivy_sparse_array">is_ivy_sparse_array() (in module ivy.functional.ivy.experimental)</a>, <a href="functional/ivy/experimental/is_ivy_sparse_array.html#ivy.functional.ivy.experimental.is_ivy_sparse_array">[1]</a>
 </li>
       <li><a href="functional/ivy/general/is_native_array.html#ivy.array.array_methods.is_native_array">is_native_array() (in module ivy.array.array_methods)</a>, <a href="functional/ivy/general/is_native_array/is_native_array_array.html#ivy.array.array_methods.is_native_array">[1]</a>
@@ -3889,6 +3898,13 @@
 
       <ul>
         <li><a href="nested_array/base.html#module-ivy.nested_array.base">module</a>
+</li>
+      </ul></li>
+      <li>
+    ivy.nested_array.elementwise
+
+      <ul>
+        <li><a href="nested_array/elementwise.html#module-ivy.nested_array.elementwise">module</a>
 </li>
       </ul></li>
       <li>
@@ -4672,6 +4688,8 @@
 </li>
         <li><a href="nested_array/base.html#module-ivy.nested_array.base">ivy.nested_array.base</a>
 </li>
+        <li><a href="nested_array/elementwise.html#module-ivy.nested_array.elementwise">ivy.nested_array.elementwise</a>
+</li>
         <li><a href="nested_array/nested_array.html#module-ivy.nested_array.nested_array">ivy.nested_array.nested_array</a>
 </li>
         <li><a href="stateful.html#module-ivy.stateful">ivy.stateful</a>
@@ -4867,19 +4885,23 @@
 </li>
       <li><a href="functional/ivy/nest.html#ivy.functional.ivy.nest.nested_any">nested_any() (in module ivy.functional.ivy.nest)</a>, <a href="functional/ivy/nest/nested_any.html#ivy.functional.ivy.nest.nested_any">[1]</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="functional/ivy/nest.html#ivy.functional.ivy.nest.nested_argwhere">nested_argwhere() (in module ivy.functional.ivy.nest)</a>, <a href="functional/ivy/nest/nested_argwhere.html#ivy.functional.ivy.nest.nested_argwhere">[1]</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="nested_array/base.html#ivy.nested_array.base.NestedArrayBase.nested_array">nested_array() (ivy.nested_array.base.NestedArrayBase class method)</a>, <a href="nested_array/base/NestedArrayBase.html#ivy.nested_array.base.NestedArrayBase.nested_array">[1]</a>
 </li>
       <li><a href="functional/ivy/nest.html#ivy.functional.ivy.nest.nested_map">nested_map() (in module ivy.functional.ivy.nest)</a>, <a href="functional/ivy/nest/nested_map.html#ivy.functional.ivy.nest.nested_map">[1]</a>
 </li>
       <li><a href="functional/ivy/nest.html#ivy.functional.ivy.nest.nested_multi_map">nested_multi_map() (in module ivy.functional.ivy.nest)</a>, <a href="functional/ivy/nest/nested_multi_map.html#ivy.functional.ivy.nest.nested_multi_map">[1]</a>
 </li>
+      <li><a href="nested_array/base.html#ivy.nested_array.base.NestedArrayBase.nested_multi_map_in_static_method">nested_multi_map_in_static_method() (ivy.nested_array.base.NestedArrayBase static method)</a>, <a href="nested_array/base/NestedArrayBase.html#ivy.nested_array.base.NestedArrayBase.nested_multi_map_in_static_method">[1]</a>
+</li>
       <li><a href="nested_array/nested_array.html#ivy.nested_array.nested_array.NestedArray">NestedArray (class in ivy.nested_array.nested_array)</a>, <a href="nested_array/nested_array/NestedArray.html#ivy.nested_array.nested_array.NestedArray">[1]</a>
 </li>
       <li><a href="nested_array/base.html#ivy.nested_array.base.NestedArrayBase">NestedArrayBase (class in ivy.nested_array.base)</a>, <a href="nested_array/base/NestedArrayBase.html#ivy.nested_array.base.NestedArrayBase">[1]</a>
+</li>
+      <li><a href="nested_array/elementwise.html#ivy.nested_array.elementwise.NestedArrayElementwise">NestedArrayElementwise (class in ivy.nested_array.elementwise)</a>, <a href="nested_array/elementwise/NestedArrayElementwise.html#ivy.nested_array.elementwise.NestedArrayElementwise">[1]</a>
 </li>
       <li><a href="functional/ivy/creation.html#ivy.functional.ivy.creation.NestedSequence">NestedSequence (class in ivy.functional.ivy.creation)</a>, <a href="functional/ivy/creation/NestedSequence.html#ivy.functional.ivy.creation.NestedSequence">[1]</a>
 </li>
@@ -5922,6 +5944,8 @@
       <ul>
         <li><a href="data_classes/container/elementwise.html#ivy.container.elementwise.ContainerWithElementwise.static_add">(ivy.container.elementwise.ContainerWithElementwise static method)</a>, <a href="data_classes/container/elementwise/ContainerWithElementwise.html#ivy.container.elementwise.ContainerWithElementwise.static_add">[1]</a>
 </li>
+        <li><a href="nested_array/elementwise.html#ivy.nested_array.elementwise.NestedArrayElementwise.static_add">(ivy.nested_array.elementwise.NestedArrayElementwise static method)</a>, <a href="nested_array/elementwise/NestedArrayElementwise.html#ivy.nested_array.elementwise.NestedArrayElementwise.static_add">[1]</a>
+</li>
       </ul></li>
       <li><a href="functional/ivy/utility/all.html#ivy.container.container_methods.static_all">static_all() (in module ivy.container.container_methods)</a>, <a href="functional/ivy/utility/all/static_all_container.html#ivy.container.container_methods.static_all">[1]</a>
 
@@ -6844,6 +6868,8 @@
 </li>
       </ul></li>
       <li><a href="data_classes/container.html#ivy.container.container.Container.static_is_ivy_container">static_is_ivy_container() (ivy.container.container.Container method)</a>, <a href="data_classes/container/container.html#ivy.container.container.Container.static_is_ivy_container">[1]</a>, <a href="data_classes/container/container/Container.html#ivy.container.container.Container.static_is_ivy_container">[2]</a>
+</li>
+      <li><a href="data_classes/container.html#ivy.container.container.Container.static_is_ivy_nested_array">static_is_ivy_nested_array() (ivy.container.container.Container method)</a>, <a href="data_classes/container/container.html#ivy.container.container.Container.static_is_ivy_nested_array">[1]</a>, <a href="data_classes/container/container/Container.html#ivy.container.container.Container.static_is_ivy_nested_array">[2]</a>
 </li>
       <li><a href="functional/ivy/general/is_native_array.html#ivy.container.container_methods.static_is_native_array">static_is_native_array() (in module ivy.container.container_methods)</a>, <a href="functional/ivy/general/is_native_array/static_is_native_array_container.html#ivy.container.container_methods.static_is_native_array">[1]</a>
 
