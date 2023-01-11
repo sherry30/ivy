@@ -20,7 +20,7 @@ Layers
    layers/avg_pool2d.rst
    layers/avg_pool3d.rst
    layers/dct.rst
-   layers/interpolate.rst
    layers/fft.rst
    layers/dropout1d.rst
+   layers/ifft.rst
 
