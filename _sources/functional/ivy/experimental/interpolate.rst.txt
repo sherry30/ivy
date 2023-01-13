@@ -3,9 +3,9 @@ interpolate
 
 .. autofunction:: ivy.functional.ivy.experimental.interpolate
 
-.. autofunction:: ivy.container.container_methods.static_interpolate
-
 .. autofunction:: ivy.container.container_methods.interpolate
+
+.. autofunction:: ivy.container.container_methods.static_interpolate
 |
 | **Supported Frameworks:**
 
