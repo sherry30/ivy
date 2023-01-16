@@ -62,6 +62,8 @@ Experimental
    experimental/dropout1d.rst
    experimental/ifft.rst
    experimental/embedding.rst
+   experimental/interp.rst
+   experimental/interpolate.rst
    experimental/diagflat.rst
    experimental/kron.rst
    experimental/matrix_exp.rst
