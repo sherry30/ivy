@@ -22,5 +22,6 @@ Layers
    layers/dct.rst
    layers/fft.rst
    layers/dropout1d.rst
-   layers/ifft.rst
+   layers/interp.rst
+   layers/interpolate.rst
 
