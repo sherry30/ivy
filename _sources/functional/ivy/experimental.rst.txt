@@ -66,6 +66,8 @@ Experimental
    experimental/dropout1d.rst
    experimental/ifft.rst
    experimental/embedding.rst
+   experimental/interp.rst
+   experimental/interpolate.rst
    experimental/is_ivy_sparse_array.rst
    experimental/is_native_sparse_array.rst
    experimental/native_sparse_array.rst
