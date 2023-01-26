@@ -24,6 +24,4 @@ Layers
    layers/dropout1d.rst
    layers/ifft.rst
    layers/embedding.rst
-   layers/interp.rst
-   layers/interpolate.rst
 
