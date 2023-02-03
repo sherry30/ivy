@@ -24,5 +24,6 @@ Layers
    layers/dropout1d.rst
    layers/ifft.rst
    layers/embedding.rst
+   layers/dft.rst
    layers/padding_ceil_mode.rst
 
