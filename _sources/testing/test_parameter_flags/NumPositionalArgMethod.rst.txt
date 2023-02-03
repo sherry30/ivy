@@ -1,7 +1,7 @@
 NumPositionalArgMethod
 ======================
 
-.. autoclass:: tests.test_ivy.helpers.test_parameter_flags.NumPositionalArgMethod
+.. autoclass:: ivy_tests.test_ivy.helpers.test_parameter_flags.NumPositionalArgMethod
 	:members:
 	:special-members: __init__
 	:undoc-members:

@@ -1,7 +1,7 @@
 AsVariableFlags
 ===============
 
-.. autoclass:: tests.test_ivy.helpers.test_parameter_flags.AsVariableFlags
+.. autoclass:: ivy_tests.test_ivy.helpers.test_parameter_flags.AsVariableFlags
 	:members:
 	:special-members: __init__
 	:undoc-members:
