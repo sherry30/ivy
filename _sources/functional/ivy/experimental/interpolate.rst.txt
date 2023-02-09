@@ -2,6 +2,10 @@ interpolate
 ===========
 
 .. autofunction:: ivy.functional.ivy.experimental.interpolate
+
+.. autofunction:: ivy.container.container_methods.static_interpolate
+
+.. autofunction:: ivy.container.container_methods.interpolate
 |
 | **Supported Frameworks:**
 
@@ -18,3 +22,14 @@ interpolate
 
 .. |numpy_logo| image:: ../../../logos/supported/numpy_logo.png
    :target: https://numpy.org
+
+
+.. toctree::
+   :hidden:
+   :maxdepth: -1
+   :caption: interpolate
+
+   interpolate/interpolate_functional.rst
+   interpolate/interpolate_container.rst
+   interpolate/static_interpolate_container.rst
+
