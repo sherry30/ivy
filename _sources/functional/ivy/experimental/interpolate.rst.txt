@@ -3,6 +3,8 @@ interpolate
 
 .. autofunction:: ivy.functional.ivy.experimental.interpolate
 
+.. autofunction:: ivy.array.array_methods.interpolate
+
 .. autofunction:: ivy.container.container_methods.static_interpolate
 
 .. autofunction:: ivy.container.container_methods.interpolate
@@ -30,6 +32,7 @@ interpolate
    :caption: interpolate
 
    interpolate/interpolate_functional.rst
+   interpolate/interpolate_array.rst
    interpolate/interpolate_container.rst
    interpolate/static_interpolate_container.rst
 
